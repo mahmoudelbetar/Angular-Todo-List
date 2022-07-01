@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row mt-5">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Enter new todo" #input>
+        <button class="btn btn-success" type="button" (click)="addTask(input.value)">Add</button>
+      </div>
+  </div>
+  <p class="d-inline-block">Todo List:</p>
+  <input type="text" class="form-control w-50 d-inline-block ms-3" placeholder="Filter" (keyup)="filterTask(filter.value)" #filter>
+  <span class="ms-5">there are {{countTasks}} todos.</span>
+  <table class="table table-striped table-inverse table-responsive">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Task Name</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of (isEmpty)? tasks : tsks">
+          <td class="row justify-content-between">
+            {{task.taskName}}
+            <input (click)="removeTask(task)" type="button" class="btn btn-danger w-25" value="Completed"/>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>
